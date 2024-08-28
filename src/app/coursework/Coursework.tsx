@@ -38,7 +38,7 @@ const Coursework = ({ id }: { id: string }) => {
   const [openEvaluation, setOpenEvaluation] = useState(false);
 
   const handleCollapseFile = useCallback(() => {
-    if (screenWidth > 900) {
+    if (screenWidth > 1024) {
       toggleOpenEvaluation()
     } else {
       setIsCollapsed((prev) => !prev);
@@ -56,7 +56,7 @@ const Coursework = ({ id }: { id: string }) => {
   return (
     <div className="relative size-full sm:gap-6 space-y-6 lg:flex lg:space-y-0 3xl:justify-center">
       {isCollapsed  && (
-        <div className="h-10 w-fit items-center justify-between self-stretch rounded-[24px] bg-white px-3 sm:h-auto sm:w-full sm:p-3  hidden sm:flex md:flex">
+        <div className="h-10 w-fit items-center justify-between self-stretch rounded-[24px] bg-white px-3 sm:h-auto sm:w-full sm:p-3  hidden sm:flex md:flex lg:hidden">
           <div className="max-w-[184px] rounded-xl bg-[rgba(152,161,187,0.12)] px-3 py-1">
             <p className="w-full truncate font-bricolage text-sm font-semibold leading-[normal] text-neutrals-800">
               {coursework.title}
@@ -72,7 +72,7 @@ const Coursework = ({ id }: { id: string }) => {
           </Button>
         </div>
       )}
-      {(!isCollapsed || screenWidth > 900) && (
+      {(!isCollapsed || screenWidth > 1024) && (
         <div className={`hidden sm:block max-w-[900px] flex-1 min-w-[500px]`}>
           <PDFViewer
             title="My PDF"

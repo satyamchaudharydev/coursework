@@ -61,12 +61,12 @@ export default function SideBar() {
                 <Link
                   href={item.path}
                   key={item.name}
-                  className="relative isolate p-2 flex items-center justify-center"
+                  className={` relative isolate p-2 flex items-center justify-center ${
+                    isActivePath(item.path) ? "text-white" : "text-black"
+                  }`}
                 >
                   <item.icon
-                    className={`${
-                      isActivePath(item.path) ? "text-white" : "text-black"
-                    }`}
+                 
                   />
                   {isActivePath(item.path) && (
                     <motion.div
@@ -88,11 +88,7 @@ export default function SideBar() {
             </div>
         </div>
       </div>
-      <div className=" absolute top-2 right-[150px] ">
-         <AuthButton />
-
-        </div>
-          {/* login button */}
+    
       <div
         className="z-[9999] sticky top-0  2xl:h-[90px] px-[12px] flex sm:hidden h-[60px] bg-white
       justify-between items-center
