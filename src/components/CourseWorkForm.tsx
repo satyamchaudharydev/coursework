@@ -5,7 +5,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { string, z } from "zod";
 import React, { useMemo, useState } from "react";
 import FileUpload from "./FileUpload";
-import { Coursework, CourseworkType, useCourseworkStore } from "@/store/useCourseWorkStore";
+import {
+  Coursework,
+  CourseworkType,
+  useCourseworkStore,
+} from "@/store/useCourseWorkStore";
 import { Form, FormField, FormItem, FormLabel, FormControl } from "./ui/form";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
@@ -45,8 +49,10 @@ const formSchema = z.object({
   file: z.string(),
 });
 
-export const CourseWorkForm = React.memo(() => {
-  const {addCoursework, removeAllCourseworks} = useCourseworkStore((state) => state);
+export const CourseWorkForm = () => {
+  const { addCoursework, removeAllCourseworks } = useCourseworkStore(
+    (state) => state
+  );
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
@@ -95,22 +101,24 @@ export const CourseWorkForm = React.memo(() => {
       setTimeout(() => {
         setIsLoading(false);
         const newCoursework = addCoursework(updateValues);
-      
-        if(newCoursework instanceof Error) {
+
+        if (newCoursework instanceof Error) {
           toast({
             title: "Quota Exceeded",
             description: "You have exceeded the maximum number of coursework",
             variant: "destructive",
-            action: <Button
-              variant="secondary"
-              onClick={() => {
-                removeAllCourseworks();
-              }}
-            >Clear</Button>,
-          
-        });
-        }
-        else {
+            action: (
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  removeAllCourseworks();
+                }}
+              >
+                Clear
+              </Button>
+            ),
+          });
+        } else {
           toast({
             title: "Coursework added",
             description: "Your coursework has been added successfully",
@@ -123,8 +131,7 @@ export const CourseWorkForm = React.memo(() => {
       }, 4000);
     } catch (error: any) {
       console.log(error, "error");
-       
-  }
+    }
   };
 
   return (
@@ -237,4 +244,4 @@ export const CourseWorkForm = React.memo(() => {
       </form>
     </Form>
   );
-});
+};

@@ -1,5 +1,5 @@
 "use client";
-import React, { memo } from 'react';
+import React from 'react';
 
 const cleanPercentage = (percentage: number) => {
   const isNegativeOrNaN = !Number.isFinite(+percentage) || percentage < 0;
@@ -7,7 +7,7 @@ const cleanPercentage = (percentage: number) => {
   return isNegativeOrNaN ? 0 : isTooHigh ? 100 : +percentage;
 };
 
-const Circle = memo(({ colour, percentage, radius }: { colour: string; percentage?: number; radius: number }) => {
+const Circle = ({ colour, percentage, radius }: { colour: string; percentage?: number; radius: number }) => {
   const circ = 2 * Math.PI * radius;
   const strokePct = percentage ? ((100 - percentage) * circ) / 100 : 0;
   return (
@@ -22,9 +22,9 @@ const Circle = memo(({ colour, percentage, radius }: { colour: string; percentag
       strokeDashoffset={strokePct}
     ></circle>
   );
-});
+};
 
-const Text = memo(({ percentage, fontSize,text }: { percentage: number, fontSize: number, text?: string }) => {
+const Text = ({ percentage, fontSize,text }: { percentage: number, fontSize: number, text?: string }) => {
   const label = text || `${percentage.toFixed(0)}%`;
   return (
     <text
@@ -38,7 +38,7 @@ const Text = memo(({ percentage, fontSize,text }: { percentage: number, fontSize
       {label}
     </text>
   );
-});
+}
 
 export default function CircularProgress({
   percentage,
@@ -71,3 +71,5 @@ export default function CircularProgress({
     </svg>
   );
 }
+
+CircularProgress.displayName = "CircularProgress";
