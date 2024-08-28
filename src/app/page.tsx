@@ -7,6 +7,9 @@ import Toolbar from "@/components/Toolbar";
 import { variants } from "@/lib/variants";
 import { motion } from "framer-motion";
 
+
+
+
 export default function Home() {
   return (
     <MaxWidthWrapper className="flex flex-col gap-8 ">

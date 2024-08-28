@@ -6,7 +6,9 @@ import "./globals.css";
 import SideBar from "@/components/Sidebar";
 import Providers from "@/components/Providers";
 import { getServerSession } from "next-auth";
+import { polyfillPromiseWithResolvers } from "@/lib/pollyfillWithResolvers";
 
+polyfillPromiseWithResolvers();
 const font = localFont({ src: [
   {
     path: './fonts/Mont-Bold.ttf',
