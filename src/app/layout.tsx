@@ -9,20 +9,20 @@ import { getServerSession } from "next-auth";
 
 const font = localFont({ src: [
   {
-    path: './fonts/Mont-Bold.ttf',
+    path: '/fonts/Mont-Bold.ttf',
     weight: 'bold',
   },
   {
-    path: './fonts/Mont-Semibold.ttf',
+    path: '/fonts/Mont-Semibold.ttf',
     weight: '500',
   },
 
   {
-    path: './fonts/Mont-Regular.ttf',
+    path: '/fonts/Mont-Regular.ttf',
     weight: '600',
   },
   {
-    path: './fonts/Mont-ExtraLight.ttf',
+    path: '/fonts/Mont-ExtraLight.ttf',
     weight: '400',
   },
 ] })
