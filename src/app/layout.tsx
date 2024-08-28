@@ -13,7 +13,7 @@ const font = localFont({ src: [
     weight: 'bold',
   },
   {
-    path: './fonts/Mont-Semibold.ttf',
+    path: './fonts/Mont-SemiBold.ttf',
     weight: '500',
   },
 
