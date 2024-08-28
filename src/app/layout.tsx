@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import { Toaster } from "@/components/ui/toaster"
-
 import localFont from 'next/font/local'
 import "./globals.css";
 import SideBar from "@/components/Sidebar";
-import Providers from "@/components/Providers";
-import { getServerSession } from "next-auth";
 import { polyfillPromiseWithResolvers } from "@/lib/pollyfillWithResolvers";
 
 polyfillPromiseWithResolvers();
@@ -39,11 +36,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getServerSession();
   return (
     <html lang="en">
       <body className={font.className}>
-        <Providers session={session}>
         <div className="flex flex-col sm:flex-row ">
           <SideBar />
           <div className="w-full flex flex-col">
@@ -54,7 +49,6 @@ export default async function RootLayout({
         </div>
         <Toaster />
 
-        </Providers>
       </body>
     </html>
   );
